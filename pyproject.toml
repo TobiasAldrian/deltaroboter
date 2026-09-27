@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deltaroboter-converter"
+version = "0.1.0"
+description = "Bild/SVG → Zeichenpfade → G-Code und Arduino-Header für einen Deltaroboter-Stiftplotter"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=1.24",
+    "opencv-python-headless>=4.8",
+    "svgelements>=1.9",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+deltaconvert = "deltaconvert.cli:main"
+
+[tool.setuptools]
+packages = ["deltaconvert"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

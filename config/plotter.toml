@@ -1,0 +1,57 @@
+# =====================================================================
+#  Konfiguration Deltaroboter-Converter
+# =====================================================================
+#  Alle Längen in mm, alle Vorschübe in mm/min.
+#
+#  Koordinatensystem ("Papier-Koordinaten", wie bei einem Delta-3D-Drucker):
+#    Ursprung (0, 0)  = Mitte der Zeichenfläche
+#    X nach rechts, Y nach oben (so wie man auf das Blatt schaut)
+#    Z = 0            = Papieroberfläche, Z nach oben positiv
+#
+#  Die Umrechnung in Roboter-Koordinaten (Versatz zur Basis, inverse
+#  Kinematik, Motorwinkel) macht später das Arduino-Programm.
+#
+#  !!! Werte mit "PLATZHALTER" durch die echten Maße ersetzen !!!
+# =====================================================================
+
+[zeichenflaeche]
+breite = 200.0        # PLATZHALTER – nutzbare Breite des Papiers
+hoehe  = 200.0        # PLATZHALTER – nutzbare Höhe des Papiers
+rand   = 10.0         # freier Rand; die Zeichnung wird in (breite-2*rand) x (hoehe-2*rand) eingepasst
+
+[stift]
+z_zeichnen = 0.0      # PLATZHALTER – Höhe, bei der der Stift das Papier berührt
+z_heben    = 10.0     # PLATZHALTER – Höhe für Leerfahrten (Stift angehoben)
+
+[vorschub]
+zeichnen  = 1500.0    # PLATZHALTER – Geschwindigkeit beim Zeichnen
+leerfahrt = 3000.0    # PLATZHALTER – Geschwindigkeit bei Leerfahrten
+z         = 600.0     # PLATZHALTER – Geschwindigkeit beim Heben/Absetzen
+
+[startposition]       # hier steht der Roboter vor dem Zeichnen
+x = 0.0
+y = 0.0
+z = 30.0              # PLATZHALTER
+
+[endposition]         # hierhin fährt der Roboter nach dem Zeichnen
+x = 0.0
+y = 0.0
+z = 30.0              # PLATZHALTER
+
+[bild]                # nur für Rasterbilder (PNG, JPG, ...)
+modus           = "kontur"   # "kontur" | "mittellinie" | "kanten"
+schwellwert     = 0          # 0 = automatisch, sonst 1..255 (größer = mehr wird als dunkel erkannt)
+invertieren     = false      # true = helle statt dunkle Bereiche zeichnen
+weichzeichnen   = 3          # entfernt Bildrauschen (0 = aus)
+pixel_glaettung = 2          # glättet Pixel-Treppenstufen (0 = aus)
+max_aufloesung  = 1500       # größere Bilder werden vorher verkleinert
+
+[pfade]
+vereinfachen      = 0.1      # Toleranz in mm – größer = weniger Punkte, gröber
+min_laenge        = 1.0      # kürzere Striche (Staub, Rauschen) werden weggelassen
+verbinden_abstand = 0.3      # liegen zwei Striche so nah beieinander, wird ohne Absetzen weitergezeichnet
+optimieren        = true     # Reihenfolge so wählen, dass Leerfahrten kurz sind
+
+[ausrichtung]
+drehung  = 0                 # 0 | 90 | 180 | 270 Grad gegen den Uhrzeigersinn
+spiegeln = false             # an der Y-Achse spiegeln
