@@ -124,6 +124,7 @@ const DeltaZeichnung& ZEICHNUNG = zeichnung_meinbild;
 | `+` / `-` | Stift um 0,5 mm heben / senken |
 | `k` | Kalibrieren: Drehmoment aus, Motorwinkel live anzeigen |
 | `a` | Drehmoment aus |
+| `m` | Motoren neu suchen (nach dem Einschalten der 12 V) |
 | `t` | Trockenlauf ein/aus |
 | `?` | Hilfe |
 

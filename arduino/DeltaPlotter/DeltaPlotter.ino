@@ -16,11 +16,8 @@
          const DeltaZeichnung& ZEICHNUNG = zeichnung_bild;
 
   VOR DEM ERSTEN ECHTEN LAUF
-    - Konfiguration.h: alle PLATZHALTER pruefen
-    - 'k'  Nullposition und Richtung der Motoren kalibrieren
-    - 'g 0 0 10', dann mehrmals '-'  -> Papierebene ermitteln
-    - 'p'  pruefen, ob die ganze Zeichnung erreichbar ist
-    - 'z'  zeichnen (erst mit Stift weit ueber dem Papier testen!)
+    Schritt-fuer-Schritt-Anleitung: docs/INBETRIEBNAHME.md im Repository
+    (Motor-IDs, Geometrie, Kalibrierung mit 'k', Papierebene, Testquadrat)
 
   Werden die Motoren beim Start nicht gefunden, laeuft das Programm im
   TROCKENLAUF: Es rechnet alles durch und gibt Positionen und Winkel aus,
@@ -52,6 +49,7 @@ void hilfe() {
   Serial.println("  + / -      Stift um 0,5 mm heben / senken (Papierebene ermitteln)");
   Serial.println("  k          Kalibrieren: Drehmoment AUS, Motorwinkel anzeigen");
   Serial.println("  a          Drehmoment AUS (Roboter vorher festhalten!)");
+  Serial.println("  m          Motoren neu suchen (z.B. nach dem Einschalten der 12 V)");
   Serial.println("  t          Trockenlauf ein/aus");
   Serial.println("  ?          diese Hilfe");
   Serial.print("Modus: ");
@@ -159,6 +157,14 @@ void befehlAusfuehren(char* text) {
       drehmomentAus();
       positionBekannt = false;
       Serial.println("Drehmoment aus.");
+      break;
+    case 'm':
+      Serial.println("Suche Motoren ...");
+      motorenGefunden = motorenStarten();
+      trockenlauf = !motorenGefunden;
+      positionBekannt = false;
+      Serial.println(motorenGefunden ? "Alle 3 Motoren gefunden (Drehmoment noch AUS)."
+                                     : "Motoren nicht gefunden -> TROCKENLAUF.");
       break;
     case 't':
       if (!motorenGefunden) {

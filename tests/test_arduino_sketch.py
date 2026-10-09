@@ -152,3 +152,10 @@ def test_stift_hoehe_schrittweise(sketch: Path):
     ausgabe, _ = starte(sketch, True, "100:g 0 0 10", "5000:-", "6000:-", "7000:+")
     hoehen = [float(re.search(r"Stift Z = (-?[\d.]+)", z).group(1)) for z in ausgabe if "Stift Z =" in z]
     assert hoehen == [10.0, 9.5, 9.0, 9.5]
+
+
+def test_motoren_neu_suchen(sketch: Path):
+    ohne, _ = starte(sketch, False, "100:m")
+    assert "\n".join(ohne).count("Motoren nicht gefunden -> TROCKENLAUF.") == 2  # Start + m
+    mit, _ = starte(sketch, True, "100:m")
+    assert "\n".join(mit).count("Alle 3 Motoren gefunden") == 2
