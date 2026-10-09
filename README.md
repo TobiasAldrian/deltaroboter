@@ -132,17 +132,10 @@ und gibt Positionen und Oberarmwinkel aus, bewegt aber nichts.
 
 ### Inbetriebnahme am Roboter
 
-Die Werte in `Konfiguration.h` mit `PLATZHALTER` stammen aus dem Berechnungsbericht und müssen am
-echten Roboter geprüft werden:
+👉 **Schritt-für-Schritt-Anleitung: [docs/INBETRIEBNAHME.md](docs/INBETRIEBNAHME.md)**
+(Motor-IDs, Geometrie, Kalibrierung, Papierebene, Testquadrat, erste Zeichnung, Fehlersuche)
 
-1. **Motor-IDs** (`MOTOR_ID`) prüfen: Motor 1 liegt auf der x-Achse, 2 und 3 folgen gegen den Uhrzeigersinn (von oben).
-2. **`k`**: Oberarme nacheinander waagrecht halten → angezeigter Winkel = `NULLPOSITION`.
-   Oberarm nach unten drücken: Wert steigt → `RICHTUNG = +1`, sinkt → `-1`. Eintragen, neu hochladen.
-3. **Papierebene**: `g 0 0 10`, dann mehrmals `-`, bis der Stift das Papier berührt.
-   Den angezeigten Wert „Stiftspitze im Roboter-KS“ als `PAPIEREBENE_Z` eintragen, danach `Z_MIN` auf ca. `-1`.
-4. **`p`**: Zeichnung prüfen.
-5. **Erster Lauf** mit `z`: zur Sicherheit vorher in `config/plotter.toml` `z_zeichnen` z. B. auf 20 setzen
-   (zeichnet dann in der Luft), Header neu erzeugen, kontrollieren, dann zurück auf 0.
+Für die Motor-IDs gibt es den Hilfs-Sketch **`arduino/MotorID_Setzen`**. Ab Werk haben alle XL430 die ID 1.
 
 ---
 
@@ -153,6 +146,8 @@ deltaroboter/
 ├── deltaconvert/            Converter (Python-Paket)
 ├── config/plotter.toml      Einstellungen des Converters
 ├── arduino/DeltaPlotter/    Arduino-Sketch für den OpenRB-150
+├── arduino/MotorID_Setzen/  Hilfs-Sketch: Motor-IDs einstellen, Motoren finden
+├── docs/                    Anleitungen (Inbetriebnahme)
 ├── beispiele/               Beispielbilder und erzeugte Ausgaben
 └── tests/                   automatische Tests (Converter + Sketch-Simulation)
 ```
@@ -171,7 +166,7 @@ OpenRB-150-Board-Paket kompiliert (Reiter **Actions**).
 
 ## Nächste Schritte
 
-- [ ] Inbetriebnahme am Roboter (siehe oben)
+- [ ] Inbetriebnahme am Roboter ([docs/INBETRIEBNAHME.md](docs/INBETRIEBNAHME.md))
 - [ ] erster Zeichentest, danach Vorschübe steigern
 - [ ] Ideen: Schraffur für Flächen, Zeichnungen über USB senden statt einkompilieren
 

@@ -33,3 +33,5 @@ jobs:
           arduino-cli lib install Dynamixel2Arduino@0.8.1
       - name: DeltaPlotter kompilieren
         run: arduino-cli compile --fqbn OpenRB-150:samd:OpenRB-150 --warnings all arduino/DeltaPlotter
+      - name: MotorID_Setzen kompilieren
+        run: arduino-cli compile --fqbn OpenRB-150:samd:OpenRB-150 --warnings all arduino/MotorID_Setzen
