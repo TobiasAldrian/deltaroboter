@@ -15,28 +15,28 @@
 # =====================================================================
 
 [zeichenflaeche]
-breite = 200.0        # PLATZHALTER – nutzbare Breite des Papiers
-hoehe  = 200.0        # PLATZHALTER – nutzbare Höhe des Papiers
-rand   = 10.0         # freier Rand; die Zeichnung wird in (breite-2*rand) x (hoehe-2*rand) eingepasst
+breite = 210.0        # A4
+hoehe  = 297.0        # A4
+rand   = 5.0          # 5 mm Sicherheitsabstand -> Zeichnung max. 200 x 287 mm
 
 [stift]
 z_zeichnen = 0.0      # PLATZHALTER – Höhe, bei der der Stift das Papier berührt
 z_heben    = 10.0     # PLATZHALTER – Höhe für Leerfahrten (Stift angehoben)
 
 [vorschub]
-zeichnen  = 1500.0    # PLATZHALTER – Geschwindigkeit beim Zeichnen
-leerfahrt = 3000.0    # PLATZHALTER – Geschwindigkeit bei Leerfahrten
-z         = 600.0     # PLATZHALTER – Geschwindigkeit beim Heben/Absetzen
+zeichnen  = 600.0     # 10 mm/s - Steigerung z.B.: 1500 mm/min
+leerfahrt = 1200.0    # 20 mm/s - Steigerung z.B.: 3000 mm/min
+z         = 300.0     # 5 mm/s  - Steigerung z.B.: 600  mm/min
 
 [startposition]       # hier steht der Roboter vor dem Zeichnen
 x = 0.0
 y = 0.0
-z = 30.0              # PLATZHALTER
+z = 50.0              # PLATZHALTER
 
 [endposition]         # hierhin fährt der Roboter nach dem Zeichnen
 x = 0.0
 y = 0.0
-z = 30.0              # PLATZHALTER
+z = 50.0              # PLATZHALTER
 
 [bild]                # nur für Rasterbilder (PNG, JPG, ...)
 modus           = "kontur"   # "kontur" | "mittellinie" | "kanten"
