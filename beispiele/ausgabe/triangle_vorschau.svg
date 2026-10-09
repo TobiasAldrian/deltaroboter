@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="230mm" height="331mm" viewBox="-115 -172.5 230 331">
+<rect x="-115" y="-172.5" width="230" height="331" fill="#f4f4f4"/>
+<rect x="-105" y="-148.5" width="210" height="297" fill="#ffffff" stroke="#999" stroke-width="0.3"/>
+<rect x="-100" y="-143.5" width="200" height="287" fill="none" stroke="#ccc" stroke-width="0.2" stroke-dasharray="2 2"/>
+<path d="M-4,0 H4 M0,-4 V4" stroke="#bbb" stroke-width="0.2"/>
+<path d="M0.00,-0.00 L-3.76,-84.25 M-3.76,-84.25 L0.08,-88.17 M0.08,-89.34 L0.00,-0.00" fill="none" stroke="#e5484d" stroke-width="0.25" stroke-dasharray="1.5 1.5" opacity="0.8"/>
+<path d="M-3.76,-84.25 L-76.65,44.67 L-77.19,45.85 L-81.74,53.68 L-82.29,54.86 L-86.83,62.70 L-87.38,63.87 L-91.93,71.71 L-92.48,72.88 L-97.02,80.72 L-99.29,85.03 L-100.00,88.17 L-99.76,89.03 L-98.67,89.34 L98.82,89.34 L99.45,89.18 L99.84,88.79 L100.00,88.17 L99.29,85.03 L98.82,83.86 L96.00,78.76 L91.46,70.92 L90.91,69.75 L86.36,61.91 L85.82,60.74 L81.27,52.90 L80.72,51.72 L76.18,43.89 L75.63,42.71 L2.74,-86.21 L2.27,-86.91 L1.65,-87.46 L0.16,-87.93 L-0.47,-87.93 L-1.80,-87.23 L-2.35,-86.60 L-3.76,-84.25 M0.08,-88.17 L0.08,-89.34" fill="none" stroke="#111" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="0.00" cy="-0.00" r="2" fill="#2da44e"/>
+<circle cx="0.00" cy="-0.00" r="1.2" fill="#0969da"/>
+<text x="-111" y="-163.5" font-family="sans-serif" font-size="4.2" fill="#333">triangle.png (Modus: mittellinie) | 2 Striche, 39 Punkte | Zeichenweg 0.61 m, Leerweg 0.20 m | ca. 1 min 19 s</text>
+</svg>

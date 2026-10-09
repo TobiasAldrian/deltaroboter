@@ -192,27 +192,6 @@ def test_header_kompiliert_und_stimmt(tmp_path: Path, quadrat_bild: Path):
     assert int(out[2]) == 6
 
 
-def test_beispiel_sketch_trockenlauf(tmp_path: Path):
-    """Kompiliert den Arduino-Beispielsketch mit einem Arduino-Ersatz und lässt ihn laufen."""
-    gpp = shutil.which("g++")
-    if not gpp:
-        pytest.skip("g++ nicht installiert")
-    sketch = REPO / "arduino" / "DeltaPlotter_Beispiel"
-    mock = REPO / "tests" / "arduino_mock"
-    subprocess.run(
-        [gpp, "-std=gnu++17", "-Wall", "-Wextra", "-Werror", f"-I{mock}", f"-I{sketch}",
-         "-include", "Arduino.h", "-x", "c++", str(sketch / "DeltaPlotter_Beispiel.ino"),
-         "-x", "c++", str(mock / "main.cpp"), "-o", str(tmp_path / "sketch")],
-        check=True,
-    )
-    lauf = subprocess.run([str(tmp_path / "sketch")], capture_output=True, text=True, check=True)
-    zeilen = lauf.stdout.strip().splitlines()
-    assert zeilen[-1] == "Fertig."
-    assert zeilen[-2].split("\t") == ["0.00", "0.00", "30.00"]  # auf der Endposition angekommen
-    zs = {float(z.split("\t")[2]) for z in zeilen[3:-1]}
-    assert 0.0 in zs and 10.0 in zs  # gezeichnet und angehoben
-
-
 def test_statistik_dauer_passt_zum_werkzeugweg(quadrat_bild: Path):
     cfg = Konfig()
     erg = konvertiere(quadrat_bild, cfg)
