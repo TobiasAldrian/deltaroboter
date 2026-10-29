@@ -97,15 +97,15 @@ Dann einfach `?` eingeben, und der Roboter zeigt Befehle und Modus.
 3. **Nur die Zahl ändern.** Beispiel:
 
    ```cpp
-   const float OBERARM_A        = 223.6f;  // PLATZHALTER  Motorachse -> Kugelmitten Ellbogen
+   const float OBERARM_A        = 200.5f;  // PLATZHALTER  Motorachse -> Kugelmitten Ellbogen
    ```
    wird zu
    ```cpp
-   const float OBERARM_A        = 224.8f;  // gemessen
+   const float OBERARM_A        = 201.7f;  // gemessen
    ```
    Dabei gilt:
-   - **Punkt statt Komma**: `224.8` ✅, `224,8` ❌
-   - Das **`f`** nach der Zahl bleibt stehen (`224.8f`).
+   - **Punkt statt Komma**: `201.7` ✅, `201,7` ❌
+   - Das **`f`** nach der Zahl bleibt stehen (`201.7f`).
    - Der **Strichpunkt `;`** am Ende bleibt stehen.
    - Bei Listen in `{ … }` bleiben die Kommas **zwischen** den Werten: `{183.4f, 177.9f, 181.2f}`
    - Alles nach `//` ist nur ein Kommentar und darf beliebig geändert werden.
@@ -209,23 +209,23 @@ Ohne 12 V findet das Programm keine Motoren und rechnet dann nur.
 
    **Das solltest du sehen:**
    ```
-   Zeichnung 'triangle': 39 Punkte, alle erreichbar. Oberarmwinkel 9.8 .. 40.4 Grad
+   Zeichnung 'triangle': 39 Punkte, alle erreichbar. Oberarmwinkel 15.7 .. 46.9 Grad
    ```
    Das heißt: Alle 39 Punkte des Beispiel-Dreiecks sind erreichbar. Die Oberarme stehen dabei zwischen
-   9,8° und 40,4° unter der Waagrechten.
+   15,7° und 46,9° unter der Waagrechten.
 
 8. `z` + Enter (fährt die Zeichnung ab, hier nur rechnerisch).
 
    **Das solltest du sehen** (läuft in ein paar Sekunden durch, etwa 4000 Zeilen):
    ```
-   Zeichnung 'triangle': 39 Punkte, alle erreichbar. Oberarmwinkel 9.8 .. 40.4 Grad
+   Zeichnung 'triangle': 39 Punkte, alle erreichbar. Oberarmwinkel 15.7 .. 46.9 Grad
    TROCKENLAUF (Motoren bewegen sich nicht):  x  y  z  phi1  phi2  phi3
-   0.00    0.00    50.00   10.54   10.54   10.54
-   -0.02   0.36    49.83   10.58   10.54   10.62
-   -0.03   0.72    49.66   10.63   10.54   10.70
+   0.00    0.00    50.00   14.86   14.86   14.86
+   -0.02   0.36    49.83   14.90   14.86   14.94
+   -0.03   0.72    49.66   14.95   14.86   15.02
    ...
-   0.00    0.36    49.84   10.58   10.54   10.62
-   0.00    0.00    50.00   10.54   10.54   10.54
+   0.00    0.36    49.84   14.90   14.86   14.94
+   0.00    0.00    50.00   14.86   14.86   14.86
    Fertig.
    ```
    Jede Zeile ist ein Zwischenpunkt: `x y z` ist die Stiftposition in mm (A9), `phi1 phi2 phi3` sind die drei Oberarmwinkel.
@@ -346,7 +346,7 @@ Sind sie falsch, werden Zeichnungen verzerrt.
 |---|---|---|
 | `OBERARM_A` | **ja** | bestimmt Größe und Form der Zeichnung |
 | `UNTERARM_B` | **ja** | bestimmt Größe und Form der Zeichnung |
-| `RADIUS_BASIS`, `RADIUS_PLATTFORM` | ja, aber nur ihr **Unterschied** zählt | im Programm wird nur `RADIUS_PLATTFORM − RADIUS_BASIS` verwendet (Bericht: 55,8 − 51,1 = 4,7 mm) |
+| `RADIUS_BASIS`, `RADIUS_PLATTFORM` | ja, aber nur ihr **Unterschied** zählt | im Programm wird nur `RADIUS_PLATTFORM − RADIUS_BASIS` verwendet (Bericht: 53,3 − 51,1 = 2,2 mm) |
 | `STIFT_UEBERSTAND` | **nein** | wird in Schritt 7 automatisch mit ausgeglichen |
 
 **Regel:** Weicht dein Messwert **weniger als 1 mm** vom Bericht ab, lass den Wert stehen (Messungenauigkeit).
@@ -365,7 +365,7 @@ Weil man eine Mitte schlecht anpeilen kann:
     Mitte bis Mitte = (außen + innen) / 2
 ```
 
-Beispiel: außen 478 mm, innen 442 mm → (478 + 442) / 2 = **460 mm**.
+Beispiel: außen 458 mm, innen 422 mm → (458 + 422) / 2 = **440 mm**.
 
 ### 4.3 Oberarm `OBERARM_A` (alle 3 Arme messen)
 
@@ -381,7 +381,7 @@ Schau **seitlich** auf den Oberarm, genau in Richtung der Motorachse:
 Miss von der **Mitte der Motorwelle** bis zur **Mitte der Kugel** am Ellbogen. Die beiden Kugeln eines Arms sitzen
 nebeneinander, beide haben denselben Abstand. Trag alle 3 Werte ins Messprotokoll ein und bilde den **Mittelwert**.
 
-Bericht: **223,6 mm**.
+Bericht: **200,5 mm**.
 
 ### 4.4 Unterarm `UNTERARM_B` (alle 6 Stangen messen)
 
@@ -395,7 +395,7 @@ Bericht: **223,6 mm**.
 
 Miss jede der **6 Stangen** von Kugelmitte zu Kugelmitte (Trick aus 4.2) und bilde den **Mittelwert**.
 
-Bericht: **460 mm**.
+Bericht: **440 mm**.
 
 > **Wichtig:** Alle 6 Stangen müssen **gleich lang** sein (Unterschied höchstens 0,5 mm). Sonst steht die Plattform schief.
 > Ist eine Stange länger oder kürzer: den Gelenkkopf an ihrem Gewinde etwas hinein- oder herausdrehen und kontern.
@@ -415,9 +415,9 @@ Bericht: **460 mm**.
 - **r_B**: von der **Mitte der Basis** senkrecht bis zur **Motorachse** (Linie durch die Mitte der Motorwelle).
   Bericht: **51,1 mm**.
 - **r_P**: von der **Mitte der Plattform** bis zur **Mitte zwischen den zwei Kugeln** eines Kugelpaars.
-  Bericht: **55,8 mm**.
+  Bericht: **53,3 mm**.
 
-Für jeden der 3 Arme messen und mitteln. Entscheidend ist der **Unterschied r_P − r_B** (Bericht 4,7 mm).
+Für jeden der 3 Arme messen und mitteln. Entscheidend ist der **Unterschied r_P − r_B** (Bericht 2,2 mm).
 Weicht nur er um weniger als 1 mm ab, beide Werte stehen lassen.
 
 ### 4.6 Ergebnis eintragen
@@ -425,15 +425,15 @@ Weicht nur er um weniger als 1 mm ab, beide Werte stehen lassen.
 1. `DeltaPlotter.ino` öffnen (A2), Reiter **`Konfiguration.h`**.
 2. Diese Zeilen findest du ganz oben:
    ```cpp
-   const float OBERARM_A        = 223.6f;  // PLATZHALTER  Motorachse -> Kugelmitten Ellbogen
-   const float UNTERARM_B       = 460.0f;  // PLATZHALTER  Kugelmitte -> Kugelmitte (Unterarm)
+   const float OBERARM_A        = 200.5f;  // PLATZHALTER  Motorachse -> Kugelmitten Ellbogen
+   const float UNTERARM_B       = 440.0f;  // PLATZHALTER  Kugelmitte -> Kugelmitte (Unterarm)
    const float RADIUS_BASIS     = 51.1f;   // PLATZHALTER  Basismitte -> Motorachse (r_B)
-   const float RADIUS_PLATTFORM = 55.8f;   // PLATZHALTER  Plattformmitte -> Mitte Gelenkpaar (r_P)
+   const float RADIUS_PLATTFORM = 53.3f;   // PLATZHALTER  Plattformmitte -> Mitte Gelenkpaar (r_P)
    ```
 3. Die Werte ändern, deren Abweichung 1 mm oder mehr ist (A6), z. B. mit deinen Mittelwerten:
    ```cpp
-   const float OBERARM_A        = 224.8f;  // gemessen 09.10.
-   const float UNTERARM_B       = 461.5f;  // gemessen 09.10.
+   const float OBERARM_A        = 201.7f;  // gemessen 09.10.
+   const float UNTERARM_B       = 441.5f;  // gemessen 09.10.
    ```
    Die Werte mit weniger als 1 mm Abweichung lässt du stehen. Ersetze aber `PLATZHALTER` durch `geprüft`,
    damit du siehst, dass du sie kontrolliert hast.
@@ -856,12 +856,12 @@ Zum Abschreiben oder Ausdrucken.
 
 | Maß | Arm 1 | Arm 2 | Arm 3 | Mittelwert | Bericht | Eingetragen? |
 |---|---|---|---|---|---|---|
-| Oberarm `a` (mm) | | | | | 223,6 | |
-| Unterarm `b`, Stange links (mm) | | | | | 460 | |
-| Unterarm `b`, Stange rechts (mm) | | | | | 460 | |
+| Oberarm `a` (mm) | | | | | 200,5 | |
+| Unterarm `b`, Stange links (mm) | | | | | 440 | |
+| Unterarm `b`, Stange rechts (mm) | | | | | 440 | |
 | `r_B` Basis (mm) | | | | | 51,1 | |
-| `r_P` Plattform (mm) | | | | | 55,8 | |
-| `r_P − r_B` (mm) | | | | | 4,7 | |
+| `r_P` Plattform (mm) | | | | | 53,3 | |
+| `r_P − r_B` (mm) | | | | | 2,2 | |
 
 **Schritt 5 – Kalibrierung**
 

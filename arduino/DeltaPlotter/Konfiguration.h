@@ -4,8 +4,8 @@
 // =====================================================================
 //  Laengen in mm, Winkel in Grad.
 //
-//  Werte mit PLATZHALTER stammen aus dem Berechnungsbericht
-//  (Stand 21.09.2026) und muessen am echten Roboter geprueft bzw.
+//  Werte mit PLATZHALTER stammen aus dem Berechnungsbericht bzw. dem
+//  CAD-Modell (Stand 29.10.2026) und muessen am echten Roboter geprueft bzw.
 //  kalibriert werden (siehe Befehle 'k' und '+'/'-' im Seriellen Monitor).
 //
 //  Roboter-Koordinatensystem (wie im Berechnungsbericht):
@@ -18,10 +18,10 @@
 #include <stdint.h>
 
 // ---- Geometrie: Abstaende der Drehpunkte --------------------------------
-const float OBERARM_A        = 223.6f;  // PLATZHALTER  Motorachse -> Kugelmitten Ellbogen
-const float UNTERARM_B       = 460.0f;  // PLATZHALTER  Kugelmitte -> Kugelmitte (Unterarm)
+const float OBERARM_A        = 200.5f;  // PLATZHALTER  Motorachse -> Kugelmitten Ellbogen
+const float UNTERARM_B       = 440.0f;  // PLATZHALTER  Kugelmitte -> Kugelmitte (Unterarm)
 const float RADIUS_BASIS     = 51.1f;   // PLATZHALTER  Basismitte -> Motorachse (r_B)
-const float RADIUS_PLATTFORM = 55.8f;   // PLATZHALTER  Plattformmitte -> Mitte Gelenkpaar (r_P)
+const float RADIUS_PLATTFORM = 53.3f;   // PLATZHALTER  Plattformmitte -> Mitte Gelenkpaar (r_P)
 
 // Lage der Motoren 1, 2, 3 um die Basismitte (von oben, gegen den Uhrzeigersinn).
 // Motor 1 liegt auf der x-Achse.
@@ -43,7 +43,7 @@ const float NULLPOSITION[3] = {180.0f, 180.0f, 180.0f};  // PLATZHALTER -> mit '
 // +1, wenn der Motorwinkel GROESSER wird, wenn der Oberarm nach UNTEN geht, sonst -1.
 const int8_t RICHTUNG[3]    = {1, 1, 1};                 // PLATZHALTER -> mit 'k' kalibrieren
 
-// Erlaubter Bereich des Oberarmwinkels. Auf dem A4-Blatt werden ca. -3 .. 50 Grad gebraucht.
+// Erlaubter Bereich des Oberarmwinkels. Auf dem A4-Blatt werden ca. 11 .. 58 Grad gebraucht.
 const float PHI_MIN = -20.0f;  // PLATZHALTER  (Oberarm nach oben, Anschlag an der Basis?)
 const float PHI_MAX = 70.0f;   // PLATZHALTER
 
